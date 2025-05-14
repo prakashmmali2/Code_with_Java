@@ -1,0 +1,29 @@
+import java.util.*;
+
+class Main 
+{
+    public static void main (String[] args)
+    {
+        String str1="Hello hi";   
+        String str2 = "hi";
+        String str3 = "hi";
+        String str4 = new String("hi");
+        System.out.println("Length of String : "+str1.length());
+        System.out.println("String Char at Index : "+str1.charAt(4));
+        System.out.println("String Subset : "+str1.substring(2,6));    // Start ind and end index
+        System.out.println("String Subset : "+str1.substring(2));      // Start index till end of str
+        System.out.println("String Equal checking : "+str1.equals(str2));
+        System.out.println("String Equal checking : "+str2.equals(str3)); 
+        System.out.println("String Equal checking : "+str2.equals(str4));   // check data of veriable
+        System.out.println("String Equal checking : "+str2==str4);          // check veriable memory location
+        System.out.println("String Equal checking : "+str2==str3);          // without new 
+        System.out.println("String Equal checking by index  : "+str1.compareTo(str2));    // compare by index
+        System.out.println("String Convert in Upper Case : "+ str2.toUpperCase());     // convert in upper case 
+        System.out.println("String Convert in Lower Case : "+ str1.toLowerCase());     // Convert in lower Case
+        System.out.println("String remove space : "+str1.trim());          // remove space from starting and ending
+
+        String[] arr = str1.split(" ");        // Split from space 
+        System.out.print("String Split from given : " + Arrays.toString(arr));
+        
+    }
+}
