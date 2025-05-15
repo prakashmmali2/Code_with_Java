@@ -10,13 +10,15 @@ public class Main
 	    
 	    int left = 0;
 	    int right = str.length()-1;
-        while(left<right){
+	    if(left> 'A' && left< 'Z' || left> 'a' && left< 'z' && right>'A' && right< 'Z' || right > 'a' && right<'z'){
+	      while(left<right){
             char temp = str_arr[left];
             str_arr[left] = str_arr[right];
             str_arr[right] = temp;
             left++;
             right--;
-        }	    
+        }   
+	    }
 	    for(char val : str_arr){
 	        str2.append(val);
 	    }
