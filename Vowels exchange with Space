@@ -9,10 +9,17 @@ public class Main
 	    StringBuilder result = new StringBuilder();
 	    for(int i=0;i<str.length();i++){
 	        char ch = str.charAt(i);
-	        ch3 = Character.toLowerCase(ch);
-	        if(ch3== 'a' || ch3== 'e' || ch3== 'i' || ch3== 'o' || ch3== 'u'){
+	       
+
+// Way_1
+	        // ch3 = Character.toLowerCase(ch);
+	        // if(ch3== 'a' || ch3== 'e' || ch3== 'i' || ch3== 'o' || ch3== 'u')
+
+// Way_2
+                int index = "aeiouAEIOU".indexOf(ch); 
+	        if(index != -1){
 	            
-	            result.append(' ');
+	            result.append('_');
 	        }
 	        else{
 	            result.append(ch);
