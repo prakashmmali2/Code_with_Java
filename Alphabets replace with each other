@@ -1,0 +1,25 @@
+import  java.util.*;
+public class Main
+{
+	public static void main(String[] args) {
+	    Scanner sc = new Scanner(System.in);
+	    System.out.print("Enter the The String : ");
+	    String str = sc.nextLine();
+	    StringBuilder str2 = new StringBuilder();
+	    char[] str_arr = str.toCharArray();
+	    
+	    int left = 0;
+	    int right = str.length()-1;
+        while(left<right){
+            char temp = str_arr[left];
+            str_arr[left] = str_arr[right];
+            str_arr[right] = temp;
+            left++;
+            right--;
+        }	    
+	    for(char val : str_arr){
+	        str2.append(val);
+	    }
+	    System.out.println("Alphabets replace with each other : "+str2);
+	}
+}
