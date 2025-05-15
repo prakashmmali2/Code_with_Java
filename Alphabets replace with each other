@@ -1,27 +1,36 @@
-import  java.util.*;
-public class Main
-{
-	public static void main(String[] args) {
-	    Scanner sc = new Scanner(System.in);
-	    System.out.print("Enter the The String : ");
-	    String str = sc.nextLine();
-	    StringBuilder str2 = new StringBuilder();
-	    char[] str_arr = str.toCharArray();
-	    
-	    int left = 0;
-	    int right = str.length()-1;
-	    if(left> 'A' && left< 'Z' || left> 'a' && left< 'z' && right>'A' && right< 'Z' || right > 'a' && right<'z'){
-	      while(left<right){
-            char temp = str_arr[left];
-            str_arr[left] = str_arr[right];
-            str_arr[right] = temp;
-            left++;
-            right--;
-        }   
-	    }
-	    for(char val : str_arr){
-	        str2.append(val);
-	    }
-	    System.out.println("Alphabets replace with each other : "+str2);
-	}
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter the String: ");
+        String str = sc.nextLine();
+        char[] str_arr = str.toCharArray();
+
+        int left = 0;
+        int right = str_arr.length - 1;
+
+        while (left < right) {
+            while (left < right && !(str_arr[left] >= 'a' && str_arr[left] <= 'z')) {
+                left++;
+            }
+            while (left < right && !(str_arr[right] >= 'a' && str_arr[right] <= 'z')) {
+                right--;
+            }
+            if (left < right) {
+                char temp = str_arr[left];
+                str_arr[left] = str_arr[right];
+                str_arr[right] = temp;
+                left++;
+                right--;
+            }
+        }
+        
+        StringBuilder str2 = new StringBuilder();
+        for (char val : str_arr) {
+            str2.append(val);
+        }
+
+        System.out.println("Alphabets replaced with each other: " + str2.toString());
+    }
 }
