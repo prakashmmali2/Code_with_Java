@@ -1,0 +1,36 @@
+import java.util.*;
+public class Main
+{
+    public static int SumofArr(int size,int[] arr){
+        
+        if(size<1){
+            return -1;
+        }
+        else{
+            if(size == 1){
+            return arr[size-1];
+           }
+            else{
+                return arr[size-1] + SumofArr(size-1,arr);
+              }
+        }
+    }
+    
+    public static void main(String[] args)
+    {
+        Scanner ip = new Scanner(System.in);
+        System.out.print("Enter the Size : ");
+        int size = ip.nextInt();
+        System.out.print("Enter the Array Element : ");
+        int[] arr = new int[size];
+        for(int i = 0; i < size ; i++){
+            arr[i] = ip.nextInt();
+         
+        }
+           int res = SumofArr(size, arr);
+        
+        System.out.println("Sum of Elements in Array = "+ res);
+    }
+    
+}
+
