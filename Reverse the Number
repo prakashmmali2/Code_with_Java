@@ -1,0 +1,36 @@
+import java.util.*;
+class Main
+{
+     static int rev = 0;
+    static int reversNum(int num){
+       
+    //Way_1
+    
+    //   if(num>0){
+        
+    //       System.out.print((num%10));
+    //       reversNum(num/10);
+          
+    //   }
+    
+    
+    //way_2
+    
+   
+    if(num==0){
+        return rev;
+    }
+    else{
+        rev = (rev*10) + (num%10);
+        return reversNum(num/10);
+    }
+}
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		System.out.print("Enter the Ending Number : ");
+		int num = sc.nextInt();
+		System.out.print("Revese of Given Number : " +	reversNum(num));
+	}
+}
+
+
