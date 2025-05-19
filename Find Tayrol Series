@@ -1,0 +1,51 @@
+import java.util.*;
+class Main
+{
+ /*
+       tyrol Formula = 
+       
+       e^x  = 1 + (x/2!) + ((x^2)/2!) + ((x^3)/3!) + ((x^4)/4!) + ......... + ((x^n)/n!)
+       
+    */
+static double power(int n , int x)
+    {
+        if(x==1)
+        return n;
+        else if(x == 0)
+        return 1;
+        else
+        return n*power(n, x-1);
+    }
+
+static double factorial(int n)
+    {
+        if(n==1 || n==0)
+        return 1;
+        else
+        return n*factorial(n-1);
+    }
+      
+static double tyrol(int x, int n){
+        if(n==0){
+            return 1;
+        }
+        else{
+            return (power(x,n)/factorial(n)) + tyrol(x, n - 1);
+        }
+    }
+
+	public static void main(String[] args) 
+	{
+		Scanner sc = new Scanner(System.in);
+		System.out.print("Enter the power Number : ");
+		int x = sc.nextInt();
+		System.out.print("Enter the E Value : ");
+		int n = sc.nextInt();
+		System.out.print("tayrol of Given Number : ");
+		double res = tyrol(x,n);
+		
+			System.out.print(res);
+	}
+}
+
+
