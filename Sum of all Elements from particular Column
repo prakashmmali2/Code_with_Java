@@ -1,0 +1,24 @@
+import java.util.Scanner;
+public class Main {
+    public static void sumPillarElements(int[][] arr, int totRow, int totCol) {
+        for (int col = 0; col < totCol; col++) {
+            long sum = 0;
+            for (int row = 0; row < totRow; row++) {
+                sum += arr[row][col];
+            }
+            System.out.println("Sum of the Pillar " + (col+1) + " is " + sum);
+        }
+    }
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int totRow = scanner.nextInt();
+        int totCol = scanner.nextInt();
+        int[][] arr = new int[totRow][totCol];
+        for (int row = 0; row < totRow; row++) {
+            for (int col = 0; col < totCol; col++) {
+                arr[row][col] = scanner.nextInt();
+            }
+        }
+        sumPillarElements(arr, totRow, totCol);
+    }
+}
