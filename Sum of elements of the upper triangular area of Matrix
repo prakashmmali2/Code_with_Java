@@ -1,0 +1,21 @@
+import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int totRow = scanner.nextInt();
+        int totCol = totRow;
+        int[][] arr = new int[totRow][totCol];
+        for (int row = 0; row < totRow; row++) {
+            for (int col = 0; col < totCol; col++) {
+                arr[row][col] = scanner.nextInt();
+            }
+        }
+        long sum = 0;
+        for (int row = 0; row < totRow; row++) {
+            for (int col = row; col < totCol; col++) {
+                sum += arr[row][col];
+            }
+        }
+        System.out.println(sum);
+    }
+}
