@@ -1,0 +1,24 @@
+import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int tot_row = scanner.nextInt();
+        int tot_col = scanner.nextInt();
+        int[][] arr = new int[tot_row][tot_col];
+        for (int row = 0; row < tot_row; row++) {
+            for (int col = 0; col < tot_col; col++) {
+                arr[row][col] = scanner.nextInt();
+            }
+        }
+        display(arr, tot_row, tot_col);
+
+    }
+    public static void display(int[][] arr, int tot_row, int tot_col) {
+        for (int row = 0; row < tot_row; row++) {
+            for (int col = 0; col < tot_col; col++) {
+                System.out.print(arr[row][col] + " ");
+            }
+            System.out.println();
+        }
+    }
+}
