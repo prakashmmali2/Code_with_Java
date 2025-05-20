@@ -1,0 +1,19 @@
+import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int totalRows = scanner.nextInt();
+        int totalCols = scanner.nextInt();
+        int[][] arr = new int[totalRows][totalCols];
+        for (int row = 0; row < totalRows; row++) {
+            for (int col = 0; col < totalCols; col++) {
+                arr[row][col] = scanner.nextInt();
+            }
+        }
+        long sum = 0;
+        for (int i = 0; i < Math.min(totalRows, totalCols); i++) {
+            sum += arr[i][i];
+        }
+        System.out.println("Sum of the Main Diagonal Matrix is " + sum);
+    }
+}
