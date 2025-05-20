@@ -1,0 +1,39 @@
+import java.util.*;
+public class Main
+{
+    
+    static void dispay(int[][) MatrixArr,int numR , int numC{
+          for(int i = 0;i<numR;i++){
+	        for(int j = 0; j <numC;j++){
+	            System.out.print(MatrixArr[i][j] + " ");
+	        }
+	        System.out.println();
+	        dispay(MatrixArr,numR,numC);
+	    }
+    }
+	public static void main(String[] args) {
+	    Scanner sc = new Scanner(System.in);
+	    System.out.print("Enter the Size of Row : ");
+	    int numR = sc.nextInt();
+	    System.out.print("Enter the Size of Column : ");
+	    int numC = sc.nextInt();
+	    
+	    int[][] MatrixArr = new int[numR][numC];
+	    
+	   // To add the elemets in Matrix of 2D Array 
+	    
+	    for(int i = 0;i<numR;i++){
+	        for(int j = 0; j <numC;j++){
+	            MatrixArr[i][j] = sc.nextInt();
+	        }
+	    }
+	    
+	    // To Retrive the elemets from Matrix of 2D Array 
+	    
+	    System.out.println("Matrix is : "); 
+	    
+	    
+	  
+		
+	}
+}
