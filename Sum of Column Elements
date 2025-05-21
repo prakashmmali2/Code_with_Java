@@ -1,0 +1,35 @@
+import java.util.*;
+public class Main
+{
+
+public static void sumofDigo(int[][] matrix,int row,int col) {
+    int sum;
+    for(int j = 0;j < row ; j++){
+        sum = 0;
+    for (int i = 0; i < col; i++) {
+        sum += matrix[j][i];
+      }
+      
+      System.out.print(sum+" ");
+    }
+  
+}
+	
+public static void main(String[] args) {
+	    Scanner sc = new Scanner(System.in);
+	    System.out.print("Enter the Size of Row and Column : ");
+        int ncol = sc.nextInt();
+        int nrow = sc.nextInt();
+        int[][] matrix = new int[nrow][ncol];
+
+        for (int row = 0; row < nrow; row++) {
+            for (int col = 0; col < ncol; col++) {
+                 matrix[row][col] = sc.nextInt();
+               }
+            }
+            
+        System.out.print("Sum Column Elements : ");
+          sumofDigo(matrix, nrow,ncol);
+         
+        }
+}
