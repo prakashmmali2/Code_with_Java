@@ -1,0 +1,57 @@
+import java.util.*;
+public class Main
+{
+    
+  static boolean isSparse(int[][] matrix, int numR, int numC) {
+        int totalElements = numR * numC;
+        int zeroCount = 0;
+
+        for (int i = 0; i < numR; i++) {
+            for (int j = 0; j < numC; j++) {
+                if (matrix[i][j] == 0) {
+                    zeroCount++;
+                }
+            }
+        }
+
+       
+        return zeroCount > totalElements / 2;
+    }
+
+	public static void main(String[] args) {
+	    Scanner sc = new Scanner(System.in);
+	    System.out.print("Enter the Size of Row : ");
+	    int numR = sc.nextInt();
+	    System.out.print("Enter the Size of Column : ");
+	    int numC = sc.nextInt();
+	    
+	    int[][] MatrixArr = new int[numR][numC];
+	    
+	   // To add the elemets in Matrix of 2D Array 
+	    
+	    for(int i = 0;i<numR;i++){
+	        for(int j = 0; j <numC;j++){
+	            MatrixArr[i][j] = sc.nextInt();
+	        }
+	    }
+	    
+	     
+	    
+	    if (isSparse(MatrixArr, numR, numC)) {
+            System.out.println("Yes, this is a Sparse Matrix");
+        } else {
+            System.out.println("Not a Sparse Matrix");
+        } 
+	
+	}
+}
+
+
+Input :
+
+0 0 0 4
+0 1 0 0
+0 0 0 0
+5 0 0 0
+
+Output : Yes, this is a Sparse Matrix
