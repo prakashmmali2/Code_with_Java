@@ -1,0 +1,44 @@
+import java.util.*;
+public class Main
+{
+    
+    static boolean isLowerTriangular(int[][] matrix, int numR, int numC) {
+        for (int i = 1; i < numR; i++) {
+            for (int j = 0; j < i; j++) 
+            { 
+                if (matrix[i][j] != 0) {
+                    return false; 
+                }
+            }
+        }
+        return true; 
+    }
+    
+
+	public static void main(String[] args) {
+	    Scanner sc = new Scanner(System.in);
+	    System.out.print("Enter the Size of Row : ");
+	    int numR = sc.nextInt();
+	    System.out.print("Enter the Size of Column : ");
+	    int numC = sc.nextInt();
+	    
+	    int[][] MatrixArr = new int[numR][numC];
+	    
+	   // To add the elemets in Matrix of 2D Array 
+	    
+	    for(int i = 0;i<numR;i++){
+	        for(int j = 0; j <numC;j++){
+	            MatrixArr[i][j] = sc.nextInt();
+	        }
+	    }
+	    
+	     
+	    
+	    if(isLowerTriangular(MatrixArr, numR, numC)) {
+            System.out.println("Yes is this Upper-Triangular Matrix");
+        } else {
+            System.out.println("Not a Upper-Triangular Matrix");
+        } 
+	
+	}
+}
