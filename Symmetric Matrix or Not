@@ -1,0 +1,48 @@
+import java.util.*;
+public class Main
+{
+    
+    static boolean isSymmetric(int[][] matrix, int numR, int numC) {
+ 
+        if (numR != numC) {
+            return false; 
+        }
+
+        for (int i = 0; i < numR; i++) {
+            for (int j = 0; j < numC; j++) {
+                if (matrix[i][j] != matrix[j][i]) {
+                    return false; 
+                }
+            }
+        }
+        return true; 
+    }
+
+
+	public static void main(String[] args) {
+	    Scanner sc = new Scanner(System.in);
+	    System.out.print("Enter the Size of Row : ");
+	    int numR = sc.nextInt();
+	    System.out.print("Enter the Size of Column : ");
+	    int numC = sc.nextInt();
+	    
+	    int[][] MatrixArr = new int[numR][numC];
+	    
+	   // To add the elemets in Matrix of 2D Array 
+	    
+	    for(int i = 0;i<numR;i++){
+	        for(int j = 0; j <numC;j++){
+	            MatrixArr[i][j] = sc.nextInt();
+	        }
+	    }
+	    
+	     
+	    
+	    if(isSymmetric(MatrixArr, numR, numC)) {
+            System.out.println("Yes is this Symmetric Matrix");
+        } else {
+            System.out.println("Not a Symmetric Matrix");
+        } 
+	
+	}
+}
