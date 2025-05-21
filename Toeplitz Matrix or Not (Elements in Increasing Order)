@@ -1,0 +1,52 @@
+import java.util.*;
+public class Main
+{
+    
+    static boolean isToeplitz(int[][] matrix, int numR, int numC) {
+        for (int i = 0; i < numR - 1; i++) {
+            for (int j = 0; j < numC - 1; j++) {
+                if (matrix[i][j] != matrix[i + 1][j + 1]) {
+                    return false; 
+                }
+            }
+        }
+        return true; 
+    }
+
+	public static void main(String[] args) {
+	    Scanner sc = new Scanner(System.in);
+	    System.out.print("Enter the Size of Row : ");
+	    int numR = sc.nextInt();
+	    System.out.print("Enter the Size of Column : ");
+	    int numC = sc.nextInt();
+	    
+	    int[][] MatrixArr = new int[numR][numC];
+	    
+	   // To add the elemets in Matrix of 2D Array 
+	    
+	    for(int i = 0;i<numR;i++){
+	        for(int j = 0; j <numC;j++){
+	            MatrixArr[i][j] = sc.nextInt();
+	        }
+	    }
+	    
+	     
+	    
+	    if (isToeplitz(MatrixArr, numR, numC)) {
+            System.out.println("Yes, this is a Toeplitz Matrix");
+        } else {
+            System.out.println("Not a Toeplitz Matrix");
+        }
+	
+	}
+}
+
+
+
+Input Matrix : 
+1 2 3 4
+5 1 2 3
+6 5 1 6
+7 6 5 1
+
+Output : Yes, this is a Toeplitz Matrix
