@@ -1,0 +1,60 @@
+import java.util.*;
+public class Main
+{
+    
+    static void DigonalEleInRepeat(int[][] MatrixArr)
+    {
+        
+        int left = 0;
+        int right = MatrixArr[0].length-1;
+        int top = 0;
+        int bottom = MatrixArr.length-1;
+        
+        while(left<=right && top <= bottom){
+            
+            for(int i=left;i<=right;i++){
+                System.out.print(MatrixArr[top][i] + " ");
+                top++;
+            }
+            
+            for(int i=top;i<=bottom;i++){
+                System.out.print(MatrixArr[i][right] + " ");
+                right--;
+            }
+            
+            for(int i=bottom;i>=left;i--){
+                System.out.print(MatrixArr[bottom][i] + " ");
+                bottom--;
+            }
+            
+            for(int i=bottom;i>=top;i--){
+                System.out.print(MatrixArr[i][left] + " ");
+                left++;
+            }
+          }
+	        
+	        
+	    }
+	
+public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+    System.out.print("Enter the Size of Row : ");
+    int numR = sc.nextInt();
+    System.out.print("Enter the Size of Column : ");
+    int numC = sc.nextInt();
+    
+    int[][] MatrixArr = new int[numR][numC];
+    
+   // To add the elemets in Matrix of 2D Array 
+    
+    for(int i = 0;i<numR;i++){
+        for(int j = 0; j <numC;j++){
+            MatrixArr[i][j] = sc.nextInt();
+        }
+    }
+   
+    System.out.println("Digonal Elements of Matrix is Representation in Repetition : ");
+    DigonalEleInRepeat(MatrixArr);
+
+	}
+}
