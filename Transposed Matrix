@@ -1,0 +1,60 @@
+import java.util.*;
+public class Main
+{
+
+    static void TransposeMatrix(int[][] MatrixArr)
+    {
+        
+            for(int i=0; i<=MatrixArr.length; i++){
+               for(int j=i+1; j<MatrixArr[0].length; j++){
+                   int temp = MatrixArr[i][j];
+                   MatrixArr[i][j] = MatrixArr[j][i];
+                   MatrixArr[j][i] = temp;
+               }
+            }
+        }
+    static void revrse(int[] arr)
+    {
+        int left = 0;
+        int right = arr.length-1;
+        while(left < right){
+           int temp = arr[left];
+           arr[left] = arr[right];
+           arr[right] = temp;
+           left++;
+           right--;
+        }
+    }
+    
+    static void printMatrix(int[][] matrix) {
+        for (int[] row : matrix) {
+            for (int value : row) {
+                System.out.print(value + " ");
+            }
+            System.out.println();
+        }
+    }
+    
+    
+public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+    System.out.print("Enter the Size of Row : ");
+    int numR = sc.nextInt();
+    System.out.print("Enter the Size of Column : ");
+    int numC = sc.nextInt();
+    
+    int[][] MatrixArr = new int[numR][numC];
+    
+   // To add the elemets in Matrix of 2D Array 
+    
+    for(int i = 0;i<numR;i++){
+        for(int j = 0; j <numC;j++){
+            MatrixArr[i][j] = sc.nextInt();
+        }
+    }
+   
+        TransposeMatrix(MatrixArr);
+        System.out.println("Transposed Matrix:");
+        printMatrix(MatrixArr);
+  }
+}
