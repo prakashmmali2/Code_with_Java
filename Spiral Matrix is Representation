@@ -1,0 +1,66 @@
+import java.util.*;
+public class Main
+{
+    
+    static void SpiralMatrix(int[][] MatrixArr)
+    {
+        
+        int left = 0;
+        int right = MatrixArr[0].length-1;
+        int top = 0;
+        int bottom = MatrixArr.length-1;
+        int i;
+        while(left<=right && top <= bottom){
+            
+            for(i=left;i<=right;i++){
+                System.out.print(MatrixArr[top][i] + " ");
+                
+            }
+            top++;
+            for(i=top;i<=bottom;i++){
+                System.out.print(MatrixArr[i][right] + " ");
+        
+            }
+            
+            right--;
+            if(top<=bottom){
+            for(i=right;i>=left;i--){
+                System.out.print(MatrixArr[bottom][i] + " ");
+               
+            }
+            bottom--;
+            }
+            
+            if(left<=right){
+            for(i=bottom;i>=top;i--){
+                System.out.print(MatrixArr[i][left] + " ");
+                
+            }
+            left++;
+          }
+	        
+	        
+	    }
+    }
+public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+    System.out.print("Enter the Size of Row : ");
+    int numR = sc.nextInt();
+    System.out.print("Enter the Size of Column : ");
+    int numC = sc.nextInt();
+    
+    int[][] MatrixArr = new int[numR][numC];
+    
+   // To add the elemets in Matrix of 2D Array 
+    
+    for(int i = 0;i<numR;i++){
+        for(int j = 0; j <numC;j++){
+            MatrixArr[i][j] = sc.nextInt();
+        }
+    }
+   
+    System.out.println("Spiral Matrix is Representation : ");
+    SpiralMatrix(MatrixArr);
+
+	}
+}
