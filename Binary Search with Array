@@ -1,56 +1,73 @@
 import java.util.*;
 
-public class Main
-{
+public class Main {
     
-    public static int  BinarySearch(int arr[],int target)
-    {
-        int mid = (arr.length)/2;
+    public static int BinarySearch(int arr[], int target) {
         int left = 0;
-        int right = mid+1;
-        if(arr[mid]==target){
-            return mid;
-        }
-        else if(arr[mid]<target){
-            for(int i = right;i<arr.length;i++){
-                if(arr[i] == target){
-                    return i;
-                }
-            }
+        int right = arr.length - 1;
+        
+        while (left <= right) {
+            int mid = left + (right - left) / 2; 
             
-        }
-        else{
-            for(int j = left;j<mid-1;j++){
-                if(arr[j] == target){
-                    return j;
-                }
+            if (arr[mid] == target) {
+                return mid;
+            } else if (arr[mid] < target) {
+                left = mid + 1;
+            } else {
+                right = mid - 1;
             }
         }
-      
-      return -1;
+        return -1;
     }
-	public static void main(String[] args) {
-	    Scanner sc = new Scanner(System.in);
-	    System.out.print("Enter size of array : ");
-	    int size = sc.nextInt();
-	    
-	    int[] arr = new int[size];
-	    
-	    System.out.print("Enter Element : ");
-	    for(int i = 0;i < size ; i++)
-	    {
-	        arr[i] = sc.nextInt();
-	    }
-	    System.out.print("Enter Target Element : ");
-	    int target = sc.nextInt();
-	    
-	    int result = BinarySearch(arr,target);
-	    if(result == -1){
-	        System.out.println("Not Found");
-	    }
-	    else{
-	         System.out.println("Target Element is found at "+result+ " index ");
-	    }
-	
-	}
+
+    public static int LinearSearch(int arr[], int target) {
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] == target) {
+                return i+1;
+            }
+        }
+        return -1;
+    }
+
+    public static boolean isSorted(int arr[]) {
+        for (int i = 1; i < arr.length; i++) {
+            if (arr[i - 1] > arr[i]) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter size of array : ");
+        int size = sc.nextInt();
+        
+        int[] arr = new int[size];
+        
+        System.out.print("Enter Elements : ");
+        for (int i = 0; i < size; i++) {
+            arr[i] = sc.nextInt();
+        }
+
+        System.out.print("Enter Target Element : ");
+        int target = sc.nextInt();
+        
+        int result;
+        
+        // Check if the array is sorted
+        if (isSorted(arr)) {
+            result = BinarySearch(arr, target);
+        } else {
+            result = LinearSearch(arr, target);
+        }
+
+        if (result == -1) {
+            System.out.println("Not Found");
+        } else {
+            System.out.println("Target Element is found at index " + result);
+        }
+        
+        sc.close();
+    }
 }
