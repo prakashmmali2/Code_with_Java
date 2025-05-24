@@ -1,8 +1,11 @@
 import java.util.*;
 public class Main{
     public static void main(String[] args){
+        Scanner sc = new Scanner(System.in);
         int[] arr = {1,5,9,5,3,6};
-        int n;
+        System.out.println("Present Array : "+ Arrays.toString(arr));
+        System.out.print("Enter the Which Element You want to add : ");
+        int n = sc.nextInt();
         int x = 2;
         int s = 0;
         int e = arr.length - 1;
@@ -18,7 +21,7 @@ public class Main{
             }
         }
     
-  System.out.print(ans);
+  System.out.print("Add Element in this Possition : "+ans);
         
     
      }
