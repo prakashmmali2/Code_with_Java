@@ -1,0 +1,56 @@
+import java.util.*;
+
+public class Main
+{
+    
+    public static int  BinarySearch(int arr[],int target)
+    {
+        int mid = (arr.length)/2;
+        int left = 0;
+        int right = mid+1;
+        if(arr[mid]==target){
+            return mid;
+        }
+        else if(arr[mid]<target){
+            for(int i = right;i<arr.length;i++){
+                if(arr[i] == target){
+                    return i;
+                }
+            }
+            
+        }
+        else{
+            for(int j = left;j<mid-1;j++){
+                if(arr[j] == target){
+                    return j;
+                }
+            }
+        }
+      
+      return -1;
+    }
+	public static void main(String[] args) {
+	    Scanner sc = new Scanner(System.in);
+	    System.out.print("Enter size of array : ");
+	    int size = sc.nextInt();
+	    
+	    int[] arr = new int[size];
+	    
+	    System.out.print("Enter Element : ");
+	    for(int i = 0;i < size ; i++)
+	    {
+	        arr[i] = sc.nextInt();
+	    }
+	    System.out.print("Enter Target Element : ");
+	    int target = sc.nextInt();
+	    
+	    int result = BinarySearch(arr,target);
+	    if(result == -1){
+	        System.out.println("Not Found");
+	    }
+	    else{
+	         System.out.println("Target Element is found at "+result+ " index ");
+	    }
+	
+	}
+}
