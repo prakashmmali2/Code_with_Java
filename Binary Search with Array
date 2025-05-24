@@ -2,6 +2,7 @@ import java.util.*;
 
 public class Main {
     
+    // Binary Search function
     public static int BinarySearch(int arr[], int target) {
         int left = 0;
         int right = arr.length - 1;
@@ -20,22 +21,11 @@ public class Main {
         return -1;
     }
 
-    public static int LinearSearch(int arr[], int target) {
-        for (int i = 0; i < arr.length; i++) {
-            if (arr[i] == target) {
-                return i+1;
-            }
-        }
-        return -1;
-    }
 
-    public static boolean isSorted(int arr[]) {
-        for (int i = 1; i < arr.length; i++) {
-            if (arr[i - 1] > arr[i]) {
-                return false;
-            }
-        }
-        return true;
+    public static int BinarySearchOnUnsortedArray(int arr[], int target) {
+        
+        Arrays.sort(arr);
+        return BinarySearch(arr, target);
     }
 
     public static void main(String[] args) {
@@ -53,14 +43,7 @@ public class Main {
         System.out.print("Enter Target Element : ");
         int target = sc.nextInt();
         
-        int result;
-        
-        // Check if the array is sorted
-        if (isSorted(arr)) {
-            result = BinarySearch(arr, target);
-        } else {
-            result = LinearSearch(arr, target);
-        }
+        int result = BinarySearchOnUnsortedArray(arr, target);
 
         if (result == -1) {
             System.out.println("Not Found");
