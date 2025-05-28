@@ -1,0 +1,24 @@
+import java.util.Scanner;
+class Main 
+{
+    public static void PrintRevers(int n)
+    {
+        if(n==0)
+        return;
+
+      System.out.print(n + " ");
+      PrintRevers(n-1);
+    }
+
+    
+    public static void main(String[] args)
+    {
+        Scanner sc=new Scanner(System.in);
+        System.out.print("Enter the base Number : ");
+        int n=sc.nextInt();
+        System.out.print("Number in Rervse Manner : ");
+        PrintRevers(n);
+      
+        
+    }
+}
