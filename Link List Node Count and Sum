@@ -1,0 +1,62 @@
+public class Main
+{
+	public static class Node{
+	    int data;
+	    Node next;
+	    
+	    Node(int data){
+	        this.data = data;
+	        this.next = null;
+	    }
+	}
+	
+	public static void main(String[] args){
+	    Node a = new Node(5);
+	    Node b = new Node(6);
+	    Node c = new Node(7);
+	    Node d = new Node(8);
+	    Node e = new Node(9);
+	    
+	    System.out.println("Data of a : "+a.data);
+	    a.next = b;
+	    System.out.println(a.next);
+	    
+	    
+	    System.out.println("Data of b : "+b.data);
+	    b.next = c;
+	    System.out.println(b.next);
+	    
+	    
+	    System.out.println("Data of c : "+c.data);
+	     c.next = d;
+	    System.out.println(c.next);
+	    
+	    
+	    System.out.println("Data of d : "+d.data);
+	     d.next = e;
+	    System.out.println(d.next);
+	    
+	    
+	    System.out.println("Data of e : "+e.data);
+	     e.next = null;
+	    System.out.println(e.next);
+	    
+	    
+	    System.out.println();
+	    Node current = a; 
+	    int count = 0;
+	    int sum = 0;
+        while (current != null) {
+            System.out.print(current.data + " -> ");
+            count += 1;
+            sum += current.data;
+            current = current.next; 
+            
+        }
+        System.out.println("null");
+        System.out.println("Total Data Values in Link-List is : " +count);
+        
+        System.out.println("Total Sum Data Values in Link-List is : " +sum);
+        
+	}
+}
