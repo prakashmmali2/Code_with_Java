@@ -1,0 +1,116 @@
+import java.util.Scanner;
+
+class Node_creation {
+    int val;
+    Node_creation next;
+
+    
+    public Node_creation(int val) {
+        this.val = val;
+        this.next = null;
+    }
+}
+
+public class Main {
+    public static Node_creation head;
+    public static Node_creation tail;
+
+    public static void insertAtTail(int val) {
+        if (head == null) {
+            Node_creation node = new Node_creation(val);
+            head = node;
+            tail = node;
+        } else {
+            tail.next = new Node_creation(val);
+            tail = tail.next;
+        }
+    }
+
+    public static void insertAtHead(int val) {
+        if (head == null) {
+            Node_creation node = new Node_creation(val);
+            head = node;
+            tail = node;
+        } else {
+            Node_creation temp = new Node_creation(val);
+            temp.next = head;
+            head = temp;
+        }
+    }
+
+    static void insertAtIndex(int val, int index) {
+        Node_creation newNode = new Node_creation(val);
+        if (index == 0) {
+            newNode.next = head;
+            head = newNode;
+            return;
+        }
+        Node_creation temp = head;
+        for (int i = 0; temp != null && i < index - 1; i++) {
+            temp = temp.next;
+        }
+        if (temp == null) {
+            System.out.println("Invalid index");
+            return;
+        }
+        newNode.next = temp.next;
+        temp.next = newNode;
+    }
+
+    static void print_list(Node_creation head) {
+        while (head != null) {
+            System.out.print(head.val + " -> ");
+            head = head.next;
+        }
+        System.out.println("null");
+    }
+
+    static Integer findValueFromEnd(int targetIndexFromEnd) {
+        Node_creation current = head;
+        int length = 0;
+
+        // Calculate the length of the list
+        while (current != null) {
+            length++;
+            current = current.next;
+        }
+        
+        
+        int targetIndexFromBeginning = length - targetIndexFromEnd;
+        
+       
+        if (targetIndexFromBeginning < 0 || targetIndexFromBeginning >= length) {
+            return null;
+        }
+
+        current = head; 
+        for (int i = 0; i < targetIndexFromBeginning; i++) {
+            current = current.next;
+        }
+        
+        return current.val; 
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        insertAtTail(1);
+        insertAtTail(2);
+        insertAtTail(3);
+        insertAtHead(4);
+        insertAtHead(5);
+        insertAtIndex(7, 2);
+        print_list(head);
+
+        // Example of finding the target value from the end
+        System.out.print("Enter an index from the end to find the corresponding value: ");
+        int indexFromEnd = sc.nextInt();
+        Integer value = findValueFromEnd(indexFromEnd);
+        if (value != null) {
+            System.out.println("Value at index " + indexFromEnd + " from the end is: " + value);
+        } else {
+            System.out.println("Invalid index! Index out of bounds.");
+        }
+        
+        sc.close();
+    }
+}
