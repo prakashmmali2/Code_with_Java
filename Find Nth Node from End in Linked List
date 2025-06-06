@@ -1,0 +1,59 @@
+public class Main
+{
+    public static class Node{
+        int data;
+        Node next;
+        Node(int data){
+            this.data=data;
+            this.next=null;
+        }
+    }
+    public static Node NthNode(Node head, int n){
+        // first Find size of ll
+        Node temp=head;
+        int size=0;
+        while(temp!=null){
+            temp=temp.next;
+            size++;
+        }
+        // find node from start
+        // pth index node from start is a Nth node from End
+        int p= size-n+1;
+        
+        // to get temp pointer to head after size
+        temp=head;
+        for(int i=1; i<=p-1; i++){
+            temp=temp.next;
+        }
+        return temp;
+    }
+    public static void display(Node head){
+        Node temp=head;
+        while(temp!=null){
+            System.out.print(temp.data + " ");
+            temp=temp.next;
+        }
+        System.out.println();
+    }
+	public static void main(String[] args) {
+		
+		// Find Nth Node from End 
+		// 5->6->7->8->9->10
+		// find  3rd Node from end (ans =9)
+		Node a= new Node(5);
+	    Node b= new Node(6);
+	    Node c= new Node(7);
+	    Node d= new Node(8);
+	    Node e= new Node(9);
+	    Node f= new Node(10);
+	    a.next=b;
+	    b.next=c;
+	    c.next=d;
+	    d.next=e;
+	    e.next=f;
+	    display(a);
+	    Node ans=NthNode(a,4);
+	    System.out.println("Nth Node from end " + ans.data);
+		
+	}
+}
