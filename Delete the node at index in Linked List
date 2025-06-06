@@ -1,0 +1,104 @@
+public class Main {
+    public static class Node {
+        int data;
+        Node next;
+
+        Node(int data) {
+            this.data = data;
+            this.next = null;
+        }
+    }
+
+    public static Node NthNode(Node head, int n) {
+        // Find size of linked list
+        Node temp = head;
+        int size = 0;
+        while (temp != null) {
+            temp = temp.next;
+            size++;
+        }
+        // Find node from start
+        // pth index node from start is an Nth node from End
+        int p = size - n + 1;
+
+        // Set temp pointer to head after size
+        temp = head;
+        for (int i = 1; i <= p - 1; i++) {
+            temp = temp.next;
+        }
+        return temp;
+    }
+
+    public static Node deleteNode(Node head, int index) {
+        if (head == null) {
+            return null; // List is empty, nothing to delete
+        }
+
+        if (index == 0) {
+            // If head needs to be removed
+            return head.next; // Return the new head
+        }
+
+        Node current = head;
+        Node previous = null;
+        int count = 0;
+
+        while (current != null && count < index) {
+            previous = current; // Keep track of the previous node
+            current = current.next; // Move current pointer forward
+            count++;
+        }
+
+        // If current is null, then index is greater than the number of nodes
+        if (current == null) {
+            return head; // Index is out of range, return the unchanged list
+        }
+
+        // Unlink the node from the linked list
+        previous.next = current.next;
+
+        return head; // Return the head of the updated list
+    }
+
+    public static void display(Node head) {
+        Node temp = head;
+        while (temp != null) {
+            System.out.print(temp.data + " ");
+            temp = temp.next;
+        }
+        System.out.println();
+    }
+
+    public static void main(String[] args) {
+        // Create a linked list 5->6->7->8->9->10
+        Node a = new Node(5);
+        Node b = new Node(6);
+        Node c = new Node(7);
+        Node d = new Node(8);
+        Node e = new Node(9);
+        Node f = new Node(10);
+        a.next = b;
+        b.next = c;
+        c.next = d;
+        d.next = e;
+        e.next = f;
+
+        System.out.println("Original list:");
+        display(a);
+
+        // Delete the node at index 4 (0-based index, which is the 5th node, value 10)
+        int indexToDelete = 4;
+        System.out.println("Deleting node at index " + indexToDelete);
+        a = deleteNode(a, indexToDelete);
+        System.out.println("List after deletion:");
+        display(a);
+
+        // Example to find Nth Node from end after deletion
+        Node ans = NthNode(a, 4); // Let's find the 3rd node from end (should be 8)
+        if (ans != null) {
+            System.out.println("Nth Node from end: " + ans.data);
+        } else {
+            System.out.println("Node not found.");
+        }
+    }
+}
