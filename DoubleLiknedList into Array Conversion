@@ -1,0 +1,126 @@
+import java.util.*;
+
+class DoubleLinkedList {
+    private Box firstBox;
+    private Box lastBox;
+    private int size;
+
+    private class Box {
+        int data;
+        Box lastBoxAdd;
+        Box add;
+
+        public Box(int data) {
+            this.data = data;
+        }
+    }
+
+    public DoubleLinkedList() {
+        firstBox = null;
+        lastBox = null;
+        size = 0;
+    }
+
+    public void addFirst(int data) {
+        Box newBox = new Box(data);
+        if (firstBox == null) {
+            firstBox = newBox;
+            lastBox = newBox;
+        } else {
+            newBox.add = firstBox;
+            firstBox.lastBoxAdd = newBox;
+            firstBox = newBox;
+        }
+        size++;
+    }
+
+    public void addLast(int data) {
+        Box newBox = new Box(data);
+        if (lastBox == null) {
+            firstBox = newBox;
+            lastBox = newBox;
+        } else {
+            newBox.lastBoxAdd = lastBox;
+            lastBox.add = newBox;
+            lastBox = newBox;
+        }
+        size++;
+    }
+
+    public void removeFirst() {
+        if (firstBox == null) {
+            return;
+        }
+        if (firstBox == lastBox) {
+            firstBox = null;
+            lastBox = null;
+        } else {
+            firstBox = firstBox.add;
+            firstBox.lastBoxAdd = null;
+        }
+        size--;
+    }
+
+    public void removeLast() {
+        if (lastBox == null) {
+            return;
+        }
+        if (firstBox == lastBox) {
+            firstBox = null;
+            lastBox = null;
+        } else {
+            lastBox = lastBox.lastBoxAdd;
+            lastBox.add = null;
+        }
+        size--;
+    }
+
+    public void printForward() {
+        Box temp = firstBox;
+        while (temp != null) {
+            System.out.print(temp.data + " ");
+            temp = temp.add;
+        }
+        System.out.println();
+    }
+
+    public void printBackward() {
+        Box temp = lastBox;
+        while (temp != null) {
+            System.out.print(temp.data + " ");
+            temp = temp.lastBoxAdd;
+        }
+        System.out.println();
+    }
+  public int[] toArray() {
+        int[] array = new int[size];
+        Box temp = firstBox;
+        for (int i = 0; i < size; i++) {
+            array[i] = temp.data;
+            temp = temp.add;
+        }
+        return array;
+    }
+    public static void main(String[] args) {
+        DoubleLinkedList dll = new DoubleLinkedList();
+        dll.addFirst(10);
+        dll.addFirst(20);
+        dll.addLast(30);
+        dll.addLast(40);
+        dll.printForward();
+        dll.printBackward();
+        dll.removeFirst();
+        dll.removeLast();
+        dll.printForward();
+        dll.printBackward();
+        
+        int[] array = dll.toArray();
+        System.out.println("Array contents: " + Arrays.toString(array));
+
+        dll.removeFirst();
+        dll.removeLast();
+        dll.printForward();
+        dll.printBackward();
+        
+    }
+}
