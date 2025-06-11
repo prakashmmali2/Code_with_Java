@@ -1,0 +1,55 @@
+import java.util.*;
+
+public class Main{
+    static int[] arr = new int[100];
+    static int top = -1;
+
+    static void push(int val) {
+        top += 1;
+        arr[top] = val;
+    }
+
+    static int pop() {
+        if (isEmpty()) {
+            return -1;
+        }
+        int poppedValue = arr[top];
+        top -= 1;
+        return poppedValue;
+    }
+
+    static boolean isEmpty() {
+        return top == -1;
+    }
+
+    static int peek() {
+        if (isEmpty()) {
+            return -1;
+        }
+        return arr[top];
+    }
+    
+    static int[] toArray() {
+        int[] stackArray = new int[top + 1];
+        for (int i = 0; i <= top; i++) {
+            stackArray[i] = arr[i];
+        }
+        return stackArray;
+    }
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        
+        int[] stackContents = toArray();
+        System.out.println("Stack contents: " + Arrays.toString(stackContents));
+        push(2);
+        push(5);
+        push(8);
+        stackContents = toArray();
+        System.out.println("Stack contents: " + Arrays.toString(stackContents));
+        System.out.println("Popped value: " + pop());
+        System.out.println("Top value: " + peek());
+        System.out.println("Is stack empty ; " + isEmpty());
+        stackContents = toArray();
+        System.out.println("Stack contents: " + Arrays.toString(stackContents));
+    }
+}
